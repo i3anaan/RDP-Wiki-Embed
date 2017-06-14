@@ -1,5 +1,5 @@
 === Plugin Name ===
-Contributors: rpayne7264
+Contributors: rpayne7264, I3anaan
 Tags: mediawiki, wiki, wiki embed
 Requires at least: 3.0
 Tested up to: 4.7.5
@@ -57,15 +57,15 @@ Use the shortcode [rdp-wiki-embed] for embedding MediaWiki content. The followin
 
 * url: (required) the web address of the wiki article that you want to embed on this page
 * toc_show: 0 (zero) to hide table of contents (TOC) or 1 to show
-* edit_show: 0 (zero) to hide edit links or 1 to show 
-* infobox_show: 0 (zero) to hide info boxes or 1 to show 
-* unreferenced_show: 0 (zero) to hide "unreferenced" warning boxes  or 1 to show 
-* wiki_update: number of minutes content of the wiki page will be stored on your site, before it is refreshed 
+* edit_show: 0 (zero) to hide edit links or 1 to show
+* infobox_show: 0 (zero) to hide info boxes or 1 to show
+* unreferenced_show: 0 (zero) to hide "unreferenced" warning boxes  or 1 to show
+* wiki_update: number of minutes content of the wiki page will be stored on your site, before it is refreshed
 * wiki_links: behavior after clicking a link to wiki content - **default** or **overwrite**
-* wiki_links_open_new: 0 (zero) to open wiki links in same window or 1 to open in new window 
-* global_content_replace: 1 to apply embed overwrite behavior to all wiki links on the site or 0 (zero)  
+* wiki_links_open_new: 0 (zero) to open wiki links in same window or 1 to open in new window
+* global_content_replace: 1 to apply embed overwrite behavior to all wiki links on the site or 0 (zero)
 * global_content_replace_template: page template to use for replaced content
-* source_show: 0 (zero) to hide attribution or 1 to show 
+* source_show: 0 (zero) to hide attribution or 1 to show
 * pre_source: text for source label
 
 
