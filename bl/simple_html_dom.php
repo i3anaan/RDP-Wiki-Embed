@@ -71,10 +71,14 @@ define('MAX_FILE_SIZE', 600000);
 // $maxlen is defined in the code as PHP_STREAM_COPY_ALL which is defined as -1.
 function rdp_file_get_html($url, $use_include_path = false, $context=null, $offset = -1, $maxLen=-1, $lowercase = true, $forceTagsClosed=true, $target_charset = DEFAULT_TARGET_CHARSET, $stripRN=true, $defaultBRText=DEFAULT_BR_TEXT, $defaultSpanText=DEFAULT_SPAN_TEXT)
 {
+    error_reporting(E_ALL);
 	// We DO force the tags to be terminated.
 	$dom = new rdp_simple_html_dom(null, $lowercase, $forceTagsClosed, $target_charset, $stripRN, $defaultBRText, $defaultSpanText);
 	// For sourceforge users: uncomment the next line and comment the retreive_url_contents line 2 lines down if it is not already done.
-	$contents = file_get_contents($url, $use_include_path, $context, $offset);
+	//$contents = file_get_contents($url, $use_include_path, $context, $offset);
+    // WORKAROUND - In case allow_url_fopen==false
+    $contents = rdp_file_get_contents_workaround($url);
+    
 	// Paperg - use our own mechanism for getting the contents as we want to control the timeout.
 	//$contents = retrieve_url_contents($url);
 	if (empty($contents) || strlen($contents) > MAX_FILE_SIZE)
@@ -84,6 +88,25 @@ function rdp_file_get_html($url, $use_include_path = false, $context=null, $offs
 	// The second parameter can force the selectors to all be lowercase.
 	$dom->load($contents, $lowercase, $stripRN);
 	return $dom;
+}
+
+
+/* CUSTOM ADDED */
+function rdp_file_get_contents_workaround($url) {
+    $c = curl_init($url);
+    curl_setopt($c, CURLOPT_RETURNTRANSFER, true);
+    //curl_setopt(... other options you want...)
+
+    $html = curl_exec($c);
+
+    if (curl_error($c))
+        return false;
+
+    // Get the status code
+    $status = curl_getinfo($c, CURLINFO_HTTP_CODE);
+
+    curl_close($c);
+    return $html;
 }
 
 // get html dom from string
