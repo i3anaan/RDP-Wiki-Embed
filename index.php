@@ -4,9 +4,9 @@
 Plugin Name: RDP Wiki Embed
 Plugin URI: https://github.com/i3anaan/RDP-Wiki-Embed-custom
 Description: Enables the inclusion of Wikimedia content into your own blog page or post through the use of shortcodes.
-Version: 2.0.0
+Version: 2.0.0 - AEGEE
 Author: Robert D Payne, Derk Snijders
-Author URI: http://robert-d-payne.com/
+Author URI: https://github.com/i3anaan/RDP-Wiki-Embed-custom
 License: GPLv2 or later
 */
 
